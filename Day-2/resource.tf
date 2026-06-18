@@ -13,7 +13,7 @@ data "aws_vpc" "default" {
 resource "aws_security_group" "sg"{
     name = var.sg-name
     description = var.sg-name
-    vpc_id = data.aws_vpc_default.id 
+    vpc_id = data.aws_vpc.default.id 
 
     ingress {
         from_port = var.ingress-ssh
