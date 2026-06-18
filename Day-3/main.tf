@@ -115,7 +115,7 @@ resource "aws_instance" "my_instance" {
     instance_type = var.instance_type
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.sg.id]
-    user_data = file("/root/terraform-practice/Day-3/user-data.sh")
+    user_data = file("/root/terraform-practice/Day-3/user_data.sh")
     tags = {
         Name = "my_instance"
     }
