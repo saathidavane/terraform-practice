@@ -49,7 +49,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 resource "aws_route_table" "public_rt" {
     vpc_id = aws_vpc.my_vpc.id 
 
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.IGW.id 
     }
@@ -66,9 +66,9 @@ resource "aws_route_table_association" "public_rt_assoc" {
 resource "aws_route_table" "private_rt" {
     vpc_id = aws_vpc.my_vpc.id
 
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
-        nat_gateway.id = aws_nat_gateway.nat_gateway.id 
+        gateway_id = aws_nat_gateway.nat_gateway.id 
     }
     tags = {
       Name = "private_rt"
@@ -92,14 +92,14 @@ resource "aws_security_group" "sg" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    ingress = {
+    ingress {
         from_port = 80
         to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    egress = {
+    egress  {
         from_port = 0
         to_port = 0
         protocol = -1
