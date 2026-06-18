@@ -26,6 +26,7 @@ variable "key-name" {
 }
 
 variable "instance-name" {
-    default = "my_instance"
-  
+    default = {
+        Name = "my_instance"
+    }
 }
